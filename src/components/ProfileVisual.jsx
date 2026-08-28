@@ -1,54 +1,54 @@
 import { motion } from "framer-motion";
 
-
 export default function ProfileVisual() {
-
-
   return (
-
     <motion.div
-
       initial={{
         opacity: 0,
-        x: 80
+        x: 60,
       }}
-
       animate={{
         opacity: 1,
-        x: 0
+        x: 0,
       }}
-
       transition={{
         duration: 0.8,
-        ease: "easeOut"
+        ease: "easeOut",
       }}
-
       className="
-  absolute
-  right-16
-  top-33
-  w-72
-  h-[360px]
-  rounded-3xl
-  overflow-hidden
-  border
-  border-cyan-400/30
-  bg-black
-  shadow-[0_0_60px_rgba(0,255,255,0.15)]
-"
+        relative
+        w-72
+        sm:w-80
+        lg:w-[340px]
+        xl:w-[360px]
+        2xl:w-[380px]
 
+        h-[360px]
+        sm:h-[400px]
+        lg:h-[430px]
+        xl:h-[460px]
+        2xl:h-[480px]
+
+        rounded-3xl
+        overflow-hidden
+        border
+        border-cyan-400/30
+        bg-black
+        shadow-[0_0_60px_rgba(0,255,255,0.15)]
+        flex-shrink-0
+      "
     >
 
-
-      {/* PROFILE IMAGE */}
+      {/* =========================================
+          PROFILE IMAGE
+          ========================================= */}
 
       <img
-
         src="/images/profile.jpg"
-
         alt="Profile"
-
         className="
+          absolute
+          inset-0
           w-full
           h-full
           object-cover
@@ -57,16 +57,14 @@ export default function ProfileVisual() {
           transition
           duration-700
         "
-
       />
 
 
-
-
-      {/* DARK CINEMATIC OVERLAY */}
+      {/* =========================================
+          DARK CINEMATIC OVERLAY
+          ========================================= */}
 
       <div
-
         className="
           absolute
           inset-0
@@ -76,30 +74,26 @@ export default function ProfileVisual() {
           to-transparent
           pointer-events-none
         "
-
       />
 
 
-
-
-
-      {/* SCAN EFFECT */}
+      {/* =========================================
+          SCAN EFFECT
+          ========================================= */}
 
       <motion.div
-
         animate={{
           y: [
             "-120%",
-            "120%"
-          ]
+            "120%",
+          ],
         }}
-
         transition={{
           duration: 3,
           repeat: Infinity,
-          repeatDelay: 2
+          repeatDelay: 2,
+          ease: "linear",
         }}
-
         className="
           absolute
           left-0
@@ -111,60 +105,50 @@ export default function ProfileVisual() {
           to-transparent
           pointer-events-none
         "
-
       />
 
 
-
-
-
-
-      {/* TOP STATUS */}
+      {/* =========================================
+          TOP STATUS
+          ========================================= */}
 
       <div
-
         className="
           absolute
-          top-4
-          left-4
-          right-4
+          top-5
+          left-5
+          right-5
           flex
           justify-between
           items-center
+          z-10
         "
-
       >
 
+        {/* IDENTITY */}
 
         <p
-
           className="
             text-cyan-400
             text-[10px]
             tracking-[0.5em]
           "
-
         >
           IDENTITY
         </p>
 
 
-
-
+        {/* ONLINE */}
 
         <div
-
           className="
             flex
             items-center
             gap-2
           "
-
         >
 
-
           <span
-
             className="
               w-2
               h-2
@@ -173,61 +157,41 @@ export default function ProfileVisual() {
               animate-pulse
               shadow-[0_0_10px_rgba(34,197,94,0.8)]
             "
-
           />
 
-
-
           <p
-
             className="
               text-green-400
               text-[10px]
               tracking-widest
             "
-
           >
             ONLINE
           </p>
 
-
-
         </div>
-
-
 
       </div>
 
 
-
-
-
-
-      {/* CORNER HUD DETAILS */}
+      {/* =========================================
+          CORNER HUD DETAILS
+          ========================================= */}
 
       <div
-
         className="
           absolute
-          bottom-4
-          left-4
+          bottom-5
+          left-5
           text-[9px]
           tracking-[0.4em]
           text-cyan-400/70
+          z-10
         "
-
       >
-
-        
-
+        PROFILE // 001
       </div>
 
-
-
-
-
     </motion.div>
-
   );
-
 }

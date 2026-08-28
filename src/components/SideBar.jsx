@@ -4,208 +4,259 @@ import {
   User,
   Cpu,
   Folder,
+  Award,
   Mail,
   Menu,
-  X
+  X,
 } from "lucide-react";
 
-
-export default function Sidebar({ setSidebarOpen }) {
-
-
+export default function Sidebar({ setSidebarOpen, resetApp }) {
   const [open, setOpen] = useState(true);
 
-
+  // =====================================================
+  // TOGGLE SIDEBAR
+  // =====================================================
 
   const toggleSidebar = () => {
-
     const newState = !open;
 
     setOpen(newState);
     setSidebarOpen(newState);
-
   };
 
 
+  // =====================================================
+  // NAVIGATION
+  // =====================================================
 
+const handleNavigation = (item) => {
 
+  // HOME
+ if (item.target === "home") {
 
-  const handleNavigation = (item) => {
+  resetApp();
 
-  if(item.target === "home"){
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth",
+  });
 
-    window.location.reload();
+  return;
 
-    return;
-
-  }
+}
 
 
   const section = document.getElementById(item.target);
 
-  if(section){
+
+  if (section) {
 
     section.scrollIntoView({
-      behavior:"smooth",
-      block:"start"
+      behavior: "smooth",
+      block: "start",
     });
+
+
+    // close sidebar after scroll finishes
+    setTimeout(() => {
+      setOpen(false);
+      setSidebarOpen(false);
+    }, 500);
+
+  } else {
+
+    console.log("Section not found:", item.target);
 
   }
 
 };
 
-
-
-
+  // =====================================================
+  // MENU ITEMS
+  // =====================================================
 
   const menuItems = [
 
     {
-      name:"Home",
-      icon:Terminal,
-      target:"home"
+      name: "Home",
+      icon: Terminal,
+      target: "home",
+    },
+
+
+    {
+      name: "Skills",
+      icon: Cpu,
+      target: "skills",
     },
 
     {
-      name:"About",
-      icon:User,
-      target:"about"
+      name: "Projects",
+      icon: Folder,
+      target: "projects",
     },
 
     {
-      name:"Skills",
-      icon:Cpu,
-      target:"skills"
+      name: "Certifications",
+      icon: Award,
+      target: "certifications",
     },
 
     {
-      name:"Projects",
-      icon:Folder,
-      target:"projects"
+      name: "About",
+      icon: User,
+      target: "about",
     },
-
-    {
-      name:"Contact",
-      icon:Mail,
-      target:"contact"
-    }
 
   ];
 
 
-
-
+  // =====================================================
+  // SIDEBAR
+  // =====================================================
 
   return (
 
     <aside
 
       className={`
+
         fixed
         top-0
         left-0
         h-screen
+
         bg-[#050505]
         text-white
+
         border-r
         border-cyan-400/20
+
         shadow-[0_0_25px_rgba(0,255,255,0.08)]
+
         transition-all
         duration-500
         ease-in-out
+
         z-50
+
         ${open ? "w-64" : "w-20"}
+
       `}
 
     >
 
 
-
-
-      {/* HEADER */}
+      {/* =================================================
+          HEADER
+      ================================================= */}
 
 
       <div
 
         className="
+
           flex
           items-center
           justify-between
+
           p-5
+
           border-b
           border-cyan-400/20
+
         "
 
       >
 
 
-        {
-          open && (
-
-            <div>
-
-              <p
-
-                className="
-                  text-[10px]
-                  text-cyan-400
-                  tracking-[0.5em]
-                "
-
-              >
-                RONA JANE
-              </p>
+        {/* BRAND */}
 
 
-              <h1
+        {open && (
 
-                className="
-                  text-sm
-                  font-bold
-                  tracking-widest
-                "
+          <div>
 
-              >
-                POLIQUIT
-              </h1>
+            <p
+
+              className="
+
+                text-[10px]
+
+                text-cyan-400
+
+                tracking-[0.5em]
+
+              "
+
+            >
+
+              RONA JANE
+
+            </p>
 
 
-            </div>
+            <h1
 
-          )
-        }
+              className="
+
+                text-sm
+                font-bold
+                tracking-widest
+
+              "
+
+            >
+
+              POLIQUIT
+
+            </h1>
+
+
+          </div>
+
+        )}
 
 
 
+        {/* TOGGLE BUTTON */}
 
 
         <button
 
           onClick={toggleSidebar}
 
+          aria-label={
+            open 
+            ? "Close sidebar" 
+            : "Open sidebar"
+          }
+
           className="
+
             p-2
+
             rounded-lg
+
             text-cyan-400
+
             hover:text-white
+
             hover:bg-cyan-400/10
+
             transition
+
           "
 
         >
 
-
-          {
-            open
-            ?
-            <X size={22}/>
-            :
-            <Menu size={22}/>
+          {open 
+            ? <X size={22}/> 
+            : <Menu size={22}/>
           }
 
 
         </button>
-
 
 
       </div>
@@ -213,19 +264,15 @@ export default function Sidebar({ setSidebarOpen }) {
 
 
 
-
-
-
-
-      {/* NAVIGATION */}
+      {/* =================================================
+          NAVIGATION
+      ================================================= */}
 
 
       <nav className="mt-8 px-3">
 
 
-      {
-
-        menuItems.map((item)=>{
+        {menuItems.map((item)=>{
 
 
           const Icon = item.icon;
@@ -237,26 +284,51 @@ export default function Sidebar({ setSidebarOpen }) {
 
               key={item.name}
 
-              onClick={()=>handleNavigation(item)}
+              onClick={() => handleNavigation(item)}
+
+              aria-label={item.name}
+
 
               className="
+
                 group
+
                 flex
+
                 items-center
+
                 gap-4
+
                 w-full
+
                 px-3
+
                 py-3
+
                 rounded-md
+
+
                 text-zinc-400
+
+
                 hover:text-cyan-300
+
+
                 hover:bg-cyan-400/5
+
+
                 transition
+
+
                 mb-2
+
               "
 
             >
 
+
+
+              {/* ICON */}
 
 
               <Icon
@@ -264,10 +336,21 @@ export default function Sidebar({ setSidebarOpen }) {
                 size={20}
 
                 className="
+
+                  flex-shrink-0
+
+
                   group-hover:scale-110
+
+
                   group-hover:text-cyan-400
+
+
                   group-hover:drop-shadow-[0_0_8px_cyan]
+
+
                   transition
+
                 "
 
               />
@@ -275,38 +358,39 @@ export default function Sidebar({ setSidebarOpen }) {
 
 
 
+              {/* LABEL */}
 
 
-              {
-                open && (
 
-                  <span
+              {open && (
 
-                    className="
-                      text-xs
-                      tracking-[0.3em]
-                    "
+                <span
 
-                  >
+                  className="
 
-                    {item.name.toUpperCase()}
+                    text-xs
 
-                  </span>
+                    tracking-[0.3em]
 
-                )
-              }
+                  "
+
+                >
+
+                  {item.name.toUpperCase()}
+
+                </span>
+
+              )}
 
 
 
             </button>
 
-
           );
 
 
-        })
+        })}
 
-      }
 
 
       </nav>
@@ -316,59 +400,72 @@ export default function Sidebar({ setSidebarOpen }) {
 
 
 
+      {/* =================================================
+          SYSTEM STATUS
+      ================================================= */}
 
 
-      {/* SYSTEM STATUS */}
+
+      {open && (
+
+        <div
+
+          className="
+
+            absolute
+
+            bottom-6
+
+            left-5
 
 
-      {
-        open && (
+            text-[10px]
 
-          <div
+
+            tracking-widest
+
+
+            text-zinc-500
+
+          "
+
+        >
+
+
+          <p>
+
+            USER: DEV_01
+
+          </p>
+
+
+
+          <p
 
             className="
-              absolute
-              bottom-6
-              left-5
-              text-[10px]
-              tracking-widest
-              text-zinc-500
+
+              text-green-400
+
+              mt-2
+
             "
 
           >
 
+            ● ONLINE
 
-            <p>
-              USER: DEV_01
-            </p>
-
-
-
-            <p
-
-              className="
-                text-green-400
-                mt-2
-              "
-
-            >
-
-              ● ONLINE
-
-            </p>
+          </p>
 
 
 
-          </div>
+        </div>
 
-        )
-      }
-
-
+      )}
 
 
 
     </aside>
+
 
   );
 

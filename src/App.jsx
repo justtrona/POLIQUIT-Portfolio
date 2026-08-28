@@ -3,14 +3,15 @@ import Sidebar from "./components/SideBar";
 import TypingText from "./components/TypingText";
 import RevealText from "./components/RevealText";
 import ProjectCarousel from "./components/ProjectCarousel";
+import ProfileStatus from "./components/ProfileStatus";
 import ProfileVisual from "./components/ProfileVisual";
+import About from "./components/About/About";
 
 function App() {
-
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const [showName, setShowName] = useState(false);
-const [statusOpen, setStatusOpen] = useState(false);
-
+  const [statusOpen, setStatusOpen] = useState(false);
+  const [appKey, setAppKey] = useState(0);
 
   const techModules = [
     {
@@ -21,17 +22,16 @@ const [statusOpen, setStatusOpen] = useState(false);
         "Tailwind CSS",
         "HTML",
         "CSS",
-        "PHP"
-      
-      ]
+        "PHP",
+      ],
     },
 
     {
       title: "MOBILE",
       items: [
         "Flutter",
-        "Dart"
-      ]
+        "Dart",
+      ],
     },
 
     {
@@ -39,9 +39,9 @@ const [statusOpen, setStatusOpen] = useState(false);
       items: [
         "Node.js",
         ".NET C#",
-        "Java" ,
-        "Python"
-      ]
+        "Java",
+        "Python",
+      ],
     },
 
     {
@@ -49,23 +49,23 @@ const [statusOpen, setStatusOpen] = useState(false);
       items: [
         "Supabase",
         "PostgreSQL",
-        "SQL"
-      ]
+        "SQL",
+      ],
     },
 
     {
       title: "CLOUD",
       items: [
-        "Azure"
-      ]
+        "Azure",
+      ],
     },
 
     {
       title: "DEPLOYMENT",
       items: [
         "Google Play Store",
-        "GitHub"
-      ]
+        "GitHub",
+      ],
     },
 
     {
@@ -73,38 +73,43 @@ const [statusOpen, setStatusOpen] = useState(false);
       items: [
         "REST API",
         "Integration",
-        "Paymongo"
-      ]
-    }
+        "Paymongo",
+      ],
+    },
   ];
-
 
   return (
     <>
+      {/* =====================================================
+          SIDEBAR
+          ===================================================== */}
 
+     <Sidebar
+  setSidebarOpen={setSidebarOpen}
+  resetApp={() => setAppKey(prev => prev + 1)}
+/>
 
-      <Sidebar
-        setSidebarOpen={setSidebarOpen}
-      />
-
-
+      {/* =====================================================
+          MAIN
+          ===================================================== */}
 
       <main
-        className={`
-          relative
-          min-h-screen
-          bg-[#050505]
-          text-white
-          overflow-hidden
-          transition-all
-          duration-500
-          ${sidebarOpen ? "ml-64" : "ml-20"}
-        `}
-      >
+  key={appKey}
+  className={`
+    relative
+    min-h-screen
+    bg-[#050505]
+    text-white
+    overflow-x-hidden
+    transition-all
+    duration-500
+    ${sidebarOpen ? "ml-64" : "ml-20"}
+  `}
+>
 
-
-
-        {/* ATMOSPHERE */}
+        {/* =====================================================
+            ATMOSPHERE
+            ===================================================== */}
 
         <div
           className="
@@ -116,112 +121,154 @@ const [statusOpen, setStatusOpen] = useState(false);
         />
 
 
-
+        {/* =====================================================
+            HERO SECTION
+            ===================================================== */}
 
         <section
           className="
             relative
             min-h-screen
-            p-16
-            flex
-            items-center
+            px-8
+            sm:px-10
+            lg:px-12
+            xl:px-16
+            py-10
           "
         >
 
-           {
-                      showName && (
-                        <ProfileVisual />
-                      )
-                    }
+          {/* =================================================
+              DOWNLOAD CV
+              ================================================= */}
 
-        
+          {showName && (
+            <a
+              href="/Rona-Jane-Poliquit-CV.pdf"
+              download
+              className="
+                absolute
+                top-6
+                right-6
+                sm:top-8
+                sm:right-8
+                lg:top-10
+                lg:right-12
+                xl:right-16
+                px-5
+                py-3
+                sm:px-6
+                rounded-full
+                border
+                border-cyan-400/40
+                text-cyan-400
+                text-[10px]
+                sm:text-xs
+                tracking-[0.2em]
+                sm:tracking-[0.3em]
+                hover:bg-cyan-400/10
+                hover:shadow-[0_0_25px_rgba(0,255,255,0.3)]
+                transition
+                z-50
+              "
+            >
+              ↓ DOWNLOAD CV
+            </a>
+          )}
 
 
+          {/* =================================================
+              HERO LAYOUT
 
-          {/* EXPORT CV */}
-                    {
-                      showName && (
-          <a
-            href="/Rona-Jane-Poliquit-CV.pdf"
-            download
+              LEFT  = TEXT
+              RIGHT = PROFILE
+
+              The grid keeps these two aligned regardless
+              of monitor width.
+              ================================================= */}
+
+          <div
             className="
-              absolute
-              top-10
-              right-12
-              px-6
-              py-3
-              rounded-full
-              border
-              border-cyan-400/40
-              text-cyan-400
-              text-xs
-              tracking-[0.3em]
-              hover:bg-cyan-400/10
-              hover:shadow-[0_0_25px_rgba(0,255,255,0.3)]
-              transition
+              min-h-[calc(100vh-5rem)]
+              w-full
+              max-w-[1350px]
+              mx-auto
+              grid
+              grid-cols-1
+              lg:grid-cols-[minmax(0,1fr)_340px]
+              xl:grid-cols-[minmax(0,1fr)_380px]
+              2xl:grid-cols-[minmax(0,1fr)_420px]
+              gap-10
+              xl:gap-14
+              2xl:gap-20
+              items-center
             "
           >
-            ↓ DOWNLOAD CV
-          </a>
-                      ) 
-                    }
 
-                
+            {/* =================================================
+                HERO TEXT
+                ================================================= */}
 
-
-          {/* HERO CONTENT */}
-
-
-          <div>
-
-
-            <p
+            <div
               className="
-                text-cyan-400
-                text-xs
-                tracking-[0.5em]
+                w-full
+                max-w-3xl
+                pt-8
+                lg:pt-0
               "
             >
 
-              <TypingText
-                text="INITIALIZING PORTFOLIO..."
-                onComplete={() => setShowName(true)}
-              />
+              {/* INITIALIZING */}
 
-            </p>
+              <p
+                className="
+                  text-cyan-400
+                  text-[10px]
+                  sm:text-xs
+                  tracking-[0.35em]
+                  sm:tracking-[0.5em]
+                "
+              >
+                <TypingText
+                  text="INITIALIZING PORTFOLIO..."
+                  onComplete={() => setShowName(true)}
+                />
+              </p>
 
 
+              {/* =================================================
+                  NAME + CONTENT
+                  ================================================= */}
 
-
-
-            {
-              showName && (
-
+              {showName && (
                 <div
                   className="
-                    mt-8
+                    mt-7
+                    sm:mt-8
                     animate-in
                     fade-in
                     duration-1000
                   "
                 >
 
-
+                  {/* NAME */}
 
                   <h1
                     className="
-                      text-5xl
+                      text-4xl
+                      sm:text-5xl
+                      lg:text-5xl
+                      xl:text-6xl
                       font-bold
-                      tracking-widest
+                      tracking-[0.08em]
+                      sm:tracking-widest
+                      whitespace-nowrap
                     "
                   >
-
-                    <RevealText text="RONA JANE POLIQUIT"/>
-
+                    <RevealText text="RONA JANE POLIQUIT" />
                   </h1>
 
 
-
+                  {/* JOB TITLE */}
 
                   <p
                     className="
@@ -235,12 +282,9 @@ const [statusOpen, setStatusOpen] = useState(false);
                   </p>
 
 
-
-
-
-
-                  {/* ROLE MODULES */}
-
+                  {/* =================================================
+                      ROLE MODULES
+                      ================================================= */}
 
                   <div
                     className="
@@ -251,45 +295,37 @@ const [statusOpen, setStatusOpen] = useState(false);
                     "
                   >
 
-                    {
-                      [
-                        "FULL STACK",
-                        "MOBILE DEVELOPMENT",
-                        "UI/UX DESIGN"
-                      ].map(role => (
-
-                        <span
-                          key={role}
-                          className="
-                            px-5
-                            py-2
-                            rounded-full
-                            border
-                            border-cyan-400/30
-                            text-cyan-400
-                            text-xs
-                            tracking-widest
-                            bg-cyan-400/5
-                            hover:bg-cyan-400/10
-                            transition
-                          "
-                        >
-                          {role}
-                        </span>
-
-                      ))
-                    }
-
+                    {[
+                      "FULL STACK",
+                      "MOBILE DEVELOPMENT",
+                      "UI/UX DESIGN",
+                    ].map((role) => (
+                      <span
+                        key={role}
+                        className="
+                          px-5
+                          py-2
+                          rounded-full
+                          border
+                          border-cyan-400/30
+                          text-cyan-400
+                          text-xs
+                          tracking-widest
+                          bg-cyan-400/5
+                          hover:bg-cyan-400/10
+                          transition
+                        "
+                      >
+                        {role}
+                      </span>
+                    ))}
 
                   </div>
 
 
-
-
-
-
-                  {/* DESCRIPTION */}
-
+                  {/* =================================================
+                      DESCRIPTION
+                      ================================================= */}
 
                   <p
                     className="
@@ -304,640 +340,419 @@ const [statusOpen, setStatusOpen] = useState(false);
                     through engineering, design, and technology.
                   </p>
 
-                  {/* PROJECT ACCESS BUTTON */}
 
-                      <div
-                        className="
-                          mt-8
-                          flex
-                          gap-4
-                        "
-                      >
+                  {/* =================================================
+                      BUTTONS
+                      ================================================= */}
 
-                        <a
-                          href="#projects"
-                          className="
-                            group
-                            flex
-                            items-center
-                            gap-3
-                            px-6
-                            py-3
-                            rounded-full
-                            border
-                            border-cyan-400/40
-                            text-cyan-400
-                            text-xs
-                            tracking-[0.3em]
-                            bg-cyan-400/5
-                            hover:bg-cyan-400/10
-                            hover:border-cyan-400
-                            hover:shadow-[0_0_25px_rgba(0,255,255,0.25)]
-                            transition
-                          "
-                        >
+                  <div
+                    className="
+                      mt-8
+                      flex
+                      flex-wrap
+                      gap-4
+                    "
+                  >
 
-                          <span>
-                            VIEW PROJECTS
-                          </span>
+                    {/* VIEW PROJECTS */}
 
-                          <span
-                            className="
-                              group-hover:translate-x-1
-                              transition
-                            "
-                          >
-                            →
-                          </span>
-
-                        </a>
-
-
-
-                        <a
-                          href="#contact"
-                          className="
-                            px-6
-                            py-3
-                            rounded-full
-                            border
-                            border-white/10
-                            text-zinc-400
-                            text-xs
-                            tracking-[0.3em]
-                            hover:text-white
-                            hover:border-white/30
-                            transition
-                          "
-                        >
-                          CONTACT
-                        </a>
-
-
-                      </div>
-
-
-{/* PROJECT ARCHIVE */}
-
-
-<div
-id="projects"
-className="
-mt-10D
-w-252
-flex
-justify-center
-"
->
-
-<ProjectCarousel />
-
-</div>
-                     
-
-
-                  {/* TECH MATRIX */}
-
-<div
-className="
-  mt-10
-  ml-23
-  w-[850px]
-  min-h-[420px]
-  border
-  border-cyan-400/20
-  rounded-3xl
-  p-8
-  bg-black/50
-  backdrop-blur-xl
-  shadow-[0_0_50px_rgba(0,255,255,0.08)]
-"
->
-
-
-                    <div
+                    <a
+                      href="#projects"
                       className="
+                        group
                         flex
                         items-center
-                        justify-between
-                        mb-6
+                        gap-3
+                        px-6
+                        py-3
+                        rounded-full
+                        border
+                        border-cyan-400/40
+                        text-cyan-400
+                        text-xs
+                        tracking-[0.3em]
+                        bg-cyan-400/5
+                        hover:bg-cyan-400/10
+                        hover:border-cyan-400
+                        hover:shadow-[0_0_25px_rgba(0,255,255,0.25)]
+                        transition
                       "
                     >
+                      <span>
+                        VIEW PROJECTS
+                      </span>
 
-                      <p
+                      <span
                         className="
-                          text-zinc-500
-                          text-xs
-                          tracking-[0.5em]
+                          group-hover:translate-x-1
+                          transition
                         "
                       >
-                        TECH MATRIX
-                      </p>
+                        →
+                      </span>
+                    </a>
 
 
-                      <p
-                        className="
-                          text-cyan-400
-                          text-[10px]
-                          tracking-widest
-                        "
-                      >
-                        CURRENT
-                      </p>
+                    {/* CONTACT */}
 
-
-                    </div>
-
-
-
-                   <div
-  className="
-    grid
-    grid-cols-4
-    gap-4
-  "
->
-
-
-                      {
-                        techModules.map((module)=>(
-
-                          <div
-                            key={module.title}
-                            className="
-                              group
-                              border
-                              border-white/10
-                              rounded-xl
-                              p-4
-                              hover:border-cyan-400/40
-                              hover:bg-cyan-400/5
-                              transition
-                            "
-                          >
-
-
-                            <div
-                              className="
-                                flex
-                                items-center
-                                gap-2
-                                mb-3
-                              "
-                            >
-
-                              <span
-                                className="
-                                  w-1.5
-                                  h-1.5
-                                  rounded-full
-                                  bg-cyan-400
-                                  shadow-[0_0_10px_rgba(0,255,255,0.8)]
-                                "
-                              />
-
-
-                              <p
-                                className="
-                                  text-cyan-400
-                                  text-xs
-                                  tracking-widest
-                                "
-                              >
-                                {module.title}
-                              </p>
-
-
-                            </div>
-
-                                                        {
-                              module.items.map(item => (
-
-                                <p
-                                  key={item}
-                                  className="
-                                    text-zinc-300
-                                    text-sm
-                                    leading-relaxed
-                                  "
-                                >
-                                  {item}
-                                </p>
-
-                              ))
-                            }
-
-
-                          </div>
-
-                        ))
-                      }
-
-
-                    </div>
-
+                    <a
+                      href="#contact"
+                      className="
+                        px-6
+                        py-3
+                        rounded-full
+                        border
+                        border-white/10
+                        text-zinc-400
+                        text-xs
+                        tracking-[0.3em]
+                        hover:text-white
+                        hover:border-white/30
+                        transition
+                      "
+                    >
+                      CONTACT
+                    </a>
 
                   </div>
 
-
-
-
-
                 </div>
+              )}
 
-              )
-            }
-
-
-                    </div>
+            </div>
 
 
-     
+            {/* =================================================
+                PROFILE IMAGE
+
+                This is now part of the grid, NOT absolute
+                positioning.
+
+                items-center = vertically aligns it with
+                the hero text.
+
+                translate-x-4 = gives it a little extra push
+                toward the right.
+                ================================================= */}
+
+            {showName && (
+              <div
+                className="
+                  flex
+                  items-center
+                  justify-center
+                  lg:justify-start
+                  translate-x-2
+                  xl:translate-x-4
+                  2xl:translate-x-6
+                "
+              >
+                <ProfileVisual />
+              </div>
+            )}
+
+          </div>
 
 
+          {/* =====================================================
+              PROJECT ARCHIVE
 
+              This is OUTSIDE the hero grid.
 
-
-{/* FLOATING PROFILE STATUS */}
-
-{
-showName && (
-
-<>
-
-{/* BUTTON */}
-
-{
-!statusOpen && (
-
-<button
-
-onClick={() => setStatusOpen(true)}
-
-className="
-fixed
-right-10
-bottom-10
-w-44
-px-5
-py-4
-rounded-full
-border
-border-cyan-400/40
-bg-black/80
-backdrop-blur-xl
-hover:bg-cyan-400/10
-hover:border-cyan-400
-hover:shadow-[0_0_35px_rgba(0,255,255,0.3)]
-transition
-z-50
-"
-
->
-
+              Therefore it can center independently from the
+              text and profile image.
+              ===================================================== */}
+{/* PROJECT ARCHIVE */}
 
 <div
-className="
-flex
-items-center
-justify-center
-gap-3
-"
+  id="projects"
+  className="
+    relative
+    z-20
+    w-full
+    flex
+    flex-col
+    justify-center
+    items-center
+    mt-4
+    sm:mt-6
+    lg:mt-8
+    px-2
+    sm:px-6
+    overflow-hidden
+  "
 >
+  {/* SECTION TITLE */}
 
-
-<span
-className="
-w-2
-h-2
-rounded-full
-bg-green-400
-animate-pulse
-shadow-[0_0_10px_rgba(34,197,94,0.8)]
-"
-/>
-
-
-<p
-className="
-text-cyan-400
-text-xs
-tracking-[0.3em]
-"
+ <p
+  className="
+    text-cyan-400
+    text-base
+    sm:text-lg
+    lg:text-xl
+    tracking-[0.35em]
+    sm:tracking-[0.45em]
+    lg:tracking-[0.5em]
+  "
 >
-PROFILE STATUS
+  A GLIMPSE BEHIND THE BUILDS
 </p>
 
 
+  {/* CAROUSEL */}
+
+  <div
+    className="
+      w-full
+      max-w-6xl
+      flex
+      justify-center
+      items-center
+      mt-0
+    "
+  >
+    <ProjectCarousel />
+  </div>
 </div>
 
-
-</button>
-
-)
-
-}
-
-
-
-
-
-
-{/* PANEL */}
-
-{
-statusOpen && (
-
-<div
-
-className="
-fixed
-right-10
-bottom-10
-w-72
-rounded-3xl
-border
-border-cyan-400/30
-bg-black/90
-backdrop-blur-xl
-p-6
-shadow-[0_0_50px_rgba(0,255,255,0.15)]
-z-50
-"
-
->
-
-
-{/* HEADER */}
-
-<div
-className="
-flex
-justify-between
-items-start
-"
->
-
-
-<p
-className="
-text-zinc-500
-text-xs
-tracking-[0.5em]
-"
->
-PROFILE
-<br/>
-STATUS
-</p>
-
-
-
-<button
-
-onClick={() => setStatusOpen(false)}
-
-className="
-text-zinc-400
-text-xs
-tracking-widest
-hover:text-cyan-400
-transition
-"
-
->
-✕
-<br/>
-CLOSE
-</button>
-
-
-</div>
-
-
-
-
-
-
-
-{/* ONLINE */}
-
-<div
-className="
-mt-8
-"
->
-
-
-<div
-className="
-flex
-items-center
-gap-3
-"
->
-
-
-<span
-className="
-w-2
-h-2
-rounded-full
-bg-green-400
-animate-pulse
-shadow-[0_0_10px_rgba(34,197,94,0.8)]
-"
-/>
-
-
-<p
-className="
-text-green-400
-text-lg
-tracking-widest
-"
->
-AVAILABLE
-</p>
-
-
-</div>
-
-
-<p
-className="
-mt-2
-text-zinc-500
-text-[10px]
-tracking-[0.4em]
-"
->
-OPEN FOR PROJECTS
-</p>
-
-
-</div>
-
-
-
-
-
-
-{/* INFO */}
-
-<div
-className="
-mt-8
-space-y-6
-"
->
-
-
-<div>
-
-<p
-className="
-text-zinc-600
-text-[10px]
-tracking-[0.4em]
-"
->
-ENGAGEMENT
-</p>
-
-
-<p
-className="
-text-white
-text-sm
-tracking-widest
-"
->
-FREELANCE / REMOTE
-</p>
-
-
-</div>
-
-
-
-
-
-<div>
-
-<p
-className="
-text-zinc-600
-text-[10px]
-tracking-[0.4em]
-"
->
-SPECIALTY
-</p>
-
-
-<p
-className="
-text-white
-text-sm
-tracking-widest
-"
->
-WEB • MOBILE • SOFTWARE
-</p>
-
-
-</div>
-
-
-
-
-
-<div>
-
-<p
-className="
-text-zinc-600
-text-[10px]
-tracking-[0.4em]
-"
->
-LOCATION
-</p>
-
-
-<p
-className="
-text-white
-text-sm
-tracking-widest
-"
->
-DAVAO CITY, PH
-</p>
-
-
-</div>
-
-
-</div>
-
-
-
-
-
-
-{/* FOOTER */}
-
-<div
-className="
-mt-6
-pt-4
-border-t
-border-white/10
-"
->
-
-<p
-className="
-text-zinc-600
-text-[10px]
-tracking-[0.4em]
-"
->
-SYS_READY // 7232
-</p>
-
-
-</div>
-
-
-
-</div>
-
-)
-
-}
-
-
-
-</>
-
-)
-
-}
-
+        {/* =====================================================
+    TECH STACK
+    ===================================================== */}
+
+{showName && (
+  <div
+    className="
+      relative
+      z-20
+      w-full
+      max-w-6xl
+      mx-auto
+      mt-16
+      sm:mt-20
+      lg:mt-24
+    "
+  >
+
+    {/* =================================================
+        SECTION TITLE
+        ================================================= */}
+
+    <div
+      className="
+        flex
+        justify-center
+        items-center
+        mb-8
+        sm:mb-10
+      "
+    >
+
+      <p
+        className="
+          text-cyan-400
+          text-lg
+          sm:text-xl
+          lg:text-2xl
+          tracking-[0.35em]
+          sm:tracking-[0.45em]
+          lg:tracking-[0.5em]
+          text-center
+        "
+      >
+        TECH STACK
+      </p>
+
+    </div>
+
+
+    {/* =================================================
+        TECH STACK PANEL
+        ================================================= */}
+
+    <div
+      className="
+        w-full
+        border
+        border-cyan-400/20
+        rounded-3xl
+        p-6
+        sm:p-8
+        lg:p-10
+        bg-black/50
+        backdrop-blur-xl
+        shadow-[0_0_60px_rgba(0,255,255,0.10)]
+      "
+    >
+
+      {/* =================================================
+          MATRIX HEADER
+          ================================================= */}
+
+      <div
+        className="
+          flex
+          items-center
+          justify-between
+          mb-7
+          sm:mb-8
+        "
+      >
+
+        <p
+          className="
+            text-zinc-500
+            text-xs
+            sm:text-sm
+            tracking-[0.4em]
+            sm:tracking-[0.5em]
+          "
+        >
+          TECH MATRIX
+        </p>
+
+
+        <p
+          className="
+            text-cyan-400
+            text-[10px]
+            sm:text-xs
+            tracking-widest
+          "
+        >
+          CURRENT
+        </p>
+
+      </div>
+
+
+      {/* =================================================
+          TECH GRID
+          ================================================= */}
+
+      <div
+        className="
+          grid
+          grid-cols-1
+          sm:grid-cols-2
+          lg:grid-cols-4
+          gap-5
+        "
+      >
+
+        {techModules.map((module) => (
+
+          <div
+            key={module.title}
+            className="
+              group
+              min-h-[180px]
+              sm:min-h-[190px]
+              border
+              border-white/10
+              rounded-2xl
+              p-5
+              sm:p-6
+              bg-black/20
+              hover:border-cyan-400/40
+              hover:bg-cyan-400/5
+              hover:shadow-[0_0_25px_rgba(0,255,255,0.06)]
+              transition
+              duration-300
+            "
+          >
+
+            {/* =================================================
+                MODULE HEADER
+                ================================================= */}
+
+            <div
+              className="
+                flex
+                items-center
+                gap-2
+                mb-4
+              "
+            >
+
+              <span
+                className="
+                  w-2
+                  h-2
+                  rounded-full
+                  bg-cyan-400
+                  shadow-[0_0_10px_rgba(0,255,255,0.8)]
+                  group-hover:shadow-[0_0_15px_rgba(0,255,255,1)]
+                  transition
+                "
+              />
+
+              <p
+                className="
+                  text-cyan-400
+                  text-xs
+                  sm:text-sm
+                  tracking-widest
+                "
+              >
+                {module.title}
+              </p>
+
+            </div>
+
+
+            {/* =================================================
+                MODULE ITEMS
+                ================================================= */}
+
+            <div className="space-y-1">
+
+              {module.items.map((item) => (
+
+                <p
+                  key={item}
+                  className="
+                    text-zinc-300
+                    text-sm
+                    sm:text-base
+                    leading-relaxed
+                  "
+                >
+                  {item}
+                </p>
+
+              ))}
+
+            </div>
+
+          </div>
+
+        ))}
+
+      </div>
+
+    </div>
+
+  </div>
+)}
 
         </section>
 
 
+           {/* =====================================================
+            ABOUT SECTION
+            ===================================================== */}
+
+        <About />
+
+              {/* =====================================================
+            FLOATING PROFILE STATUS
+            ===================================================== */}
+
+        {showName && <ProfileStatus />}
+
       </main>
-
-
     </>
   );
 }
-
-
 
 export default App;
