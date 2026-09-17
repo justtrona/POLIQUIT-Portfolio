@@ -6,6 +6,8 @@ import ProjectCarousel from "./components/ProjectCarousel";
 import ProfileStatus from "./components/ProfileStatus";
 import ProfileVisual from "./components/ProfileVisual";
 import About from "./components/About/About";
+import Certifications from "./components/Certifications/Certifications";
+
 
 function App() {
   const [sidebarOpen, setSidebarOpen] = useState(true);
@@ -167,11 +169,11 @@ function App() {
                 sm:tracking-[0.3em]
                 hover:bg-cyan-400/10
                 hover:shadow-[0_0_25px_rgba(0,255,255,0.3)]
-                transition
+                transitionS
                 z-50
               "
             >
-              ↓ DOWNLOAD CV
+              ↓ DOWNLOAD RESUME
             </a>
           )}
 
@@ -392,6 +394,8 @@ function App() {
                       </span>
                     </a>
 
+                    
+
 
                     {/* CONTACT */}
 
@@ -520,7 +524,7 @@ function App() {
     ===================================================== */}
 
 {showName && (
-  <div
+  <div id="skills "
     className="
       relative
       z-20
@@ -734,6 +738,11 @@ function App() {
 
   </div>
 )}
+
+      {/* CERTIFICATIONS*/}
+
+      <Certifications />
+
 
         </section>
 

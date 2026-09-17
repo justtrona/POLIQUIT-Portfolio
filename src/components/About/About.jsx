@@ -11,22 +11,22 @@ export default function About() {
   const stats = [
     {
       label: "STATUS",
-      value: "STUDENT",
+      value: "OPEN TO WORK",
     },
 
     {
       label: "UNIVERSITY",
-      value: "UMINDANAO",
+      value: "UNIVERSITY OF MINDANAO",
     },
 
     {
       label: "FIELD",
-      value: "COMPUTER SCIENCE",
+      value: "INFORMATION TECHNOLOGY",
     },
 
     {
       label: "MODE",
-      value: "LEARNING",
+      value: "UNDERGRADUATE",
     },
   ];
 
@@ -34,11 +34,21 @@ export default function About() {
 
   const technologies = [
     "REACT",
+    "VITE",
     "JAVASCRIPT",
     "TAILWIND",
     "JAVA",
     "DATABASE",
     "MOBILE",
+    "FLUTTER",
+    "DART",
+    "HTML",
+    "CSS",
+    "AZURE",
+    "SUPABASE",
+    "PAYMONGO",
+    "GITHUB",
+
   ];
 
 
@@ -143,22 +153,20 @@ export default function About() {
         <div className="mb-12">
 
 
-          <p
-
-            className="
-              text-cyan-400
-
-              text-xs
-
-              tracking-[0.5em]
-            "
-
-          >
-
-            ABOUT // PROFILE
-
-          </p>
-
+         <p
+        className="
+          text-cyan-400
+          text-lg
+          sm:text-xl
+          lg:text-2xl
+          tracking-[0.35em]
+          sm:tracking-[0.45em]
+          lg:tracking-[0.5em]
+          text-center
+        "
+      >
+        ABOUT ME
+      </p>
 
 
           <div
@@ -280,7 +288,7 @@ export default function About() {
 
             >
 
-              ASPIRING SOFTWARE DEVELOPER
+             MOBILE & SOFTWARE DEVELOPER
 
             </p>
 
@@ -335,31 +343,36 @@ export default function About() {
 
               >
 
-                rona@developer:~
+                mrlavalava048@gmail.com
 
               </p>
 
 
 
 
-              <p
-
-                className="
-                  text-zinc-300
-
-                  mt-3
-
-                  leading-relaxed
-                "
-
-              >
-
-                Computer Science student at the University
-                of Mindanao passionate about creating
-                digital solutions through web development,
-                software engineering, and emerging technologies.
-
-              </p>
+ <p
+  className="
+    text-zinc-300
+    mt-3
+    leading-relaxed
+  "
+>
+  I’m an Information Technology student at the University of
+  Mindanao with a strong interest in mobile application
+  development. I enjoy building mobile applications, exploring
+  different programming concepts, and turning ideas into
+  functional and user-friendly experiences.
+  <br /><br />
+  While mobile development is my main focus, I’m also interested
+  in software development, web development, databases, and other
+  areas of technology. I’m always willing to explore new tools,
+  languages, and frameworks that can help me expand my skills and
+  become a more versatile developer.
+  <br /><br />
+  My goal is to continuously improve as a developer, gain
+  real-world experience, and build applications that are useful,
+  reliable, and meaningful.
+</p>
 
 
 
@@ -543,31 +556,29 @@ export default function About() {
 
             >
 
-
-              <div
-
-                className="
-                  w-36
-                  h-36
-
-                  rounded-full
-
-                  border
-
-                  border-cyan-400/40
-
-                  bg-cyan-400/5
-
-                  flex
-
-                  items-center
-
-                  justify-center
-
-                  shadow-[0_0_40px_rgba(0,255,255,0.2)]
-                "
-
-              >
+<div
+  className="
+    w-40
+    h-40
+    rounded-full
+    border
+    border-cyan-400/40
+    bg-cyan-400/5
+    p-1
+    shadow-[0_0_40px_rgba(0,255,255,0.2)]
+    overflow-hidden
+  "
+>
+  <img
+    src="/images/profile.jpg"
+    alt="Rona Jane Poliquit"
+    className="
+      w-full
+      h-full
+      rounded-full
+      object-cover
+    "
+  />
 
 
                 <Code2
