@@ -410,9 +410,9 @@ export default function Sidebar({ setSidebarOpen, resetApp }) {
               tracking-[0.18em]
             "
           >
-            FOR WORK, COLLABS &
+            FOR WORK,PROJECTS, AND COLLABORATIONS
             <br />
-            EVERYTHING ELSE, REACH ME AT
+            REACH ME AT
           </p>
 
           {/* =================================================
