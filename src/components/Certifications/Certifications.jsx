@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 import {
   Award,
   ExternalLink,
@@ -14,79 +16,95 @@ import certificate6 from "../../assets/pubdef.jpg";
 import certificate7 from "../../assets/ReactJS-Cert.png";
 
 export default function Certifications() {
+  // ============================================================
+  // SHOW MORE / SHOW LESS STATE
+  // ============================================================
+
+  const [showAll, setShowAll] = useState(false);
+
+  // ============================================================
+  // CERTIFICATION DATA
+  // ============================================================
+
   const certifications = [
-  {
-    title: "DATABASE FUNDAMENTALS",
-    issuer: "CERTIFICATION PROVIDER",
-    date: "2026",
-    // credential: "CREDENTIAL ID",
-    image: certificate1,
-    skills: ["DATABASE", "SQL"],
-    link: "#",
-  },
+    {
+      title: "DATABASE FUNDAMENTALS",
+      issuer: "CERTIFICATION PROVIDER",
+      date: "2026",
+      // credential: "CREDENTIAL ID",
+      image: certificate1,
+      skills: ["DATABASE", "SQL"],
+      link: "#",
+    },
 
-  {
-    title: "HTML & CSS",
-    issuer: "CERTIPORT",
-    date: "2024",
-    // credential: "CREDENTIAL ID",
-    image: certificate2,
-    skills: ["HTML", "CSS", "WEB"],
-    link: "#",
-  },
+    {
+      title: "HTML & CSS",
+      issuer: "CERTIPORT",
+      date: "2024",
+      // credential: "CREDENTIAL ID",
+      image: certificate2,
+      skills: ["HTML", "CSS", "WEB"],
+      link: "#",
+    },
 
-  {
-    title: "JAVA PROGRAMMING",
-    issuer: "CERTIPORT",
-    date: "2024",
-    credential: "CREDENTIAL ID",
-    image: certificate3,
-    skills: ["JAVA", "PROGRAMMING"],
-    link: "#",
-  },
+    {
+      title: "JAVA PROGRAMMING",
+      issuer: "CERTIPORT",
+      date: "2024",
+      // credential: "CREDENTIAL ID",
+      image: certificate3,
+      skills: ["JAVA", "PROGRAMMING"],
+      link: "#",
+    },
 
-  {
-    title: "NETWORKING SECURITY",
-    issuer: "CERTIPORT",
-    date: "2026",
-    // credential: "CREDENTIAL ID",
-    image: certificate4,
-    skills: ["NETWORKING", "SECURITY"],
-    link: "#",
-  },
+    {
+      title: "NETWORKING SECURITY",
+      issuer: "CERTIPORT",
+      date: "2026",
+      // credential: "CREDENTIAL ID",
+      image: certificate4,
+      skills: ["NETWORKING", "SECURITY"],
+      link: "#",
+    },
 
-  {
-    title: "NETWORKING",
-    issuer: "CERTIPORT",
-    date: "2025",
-    // credential: "CREDENTIAL ID",
-    image: certificate5,
-    skills: ["NETWORKING", "TECHNOLOGY"],
-    link: "#",
-  },
+    {
+      title: "NETWORKING",
+      issuer: "CERTIPORT",
+      date: "2025",
+      // credential: "CREDENTIAL ID",
+      image: certificate5,
+      skills: ["NETWORKING", "TECHNOLOGY"],
+      link: "#",
+    },
 
-  {
-    title: "CAPSTONE PUBLIC DEFENSE",
-    issuer: "UNIVERSITY OF MINDANAO",
-    date: "2026",
-    // credential: "CREDENTIAL ID",
-    image: certificate6,
-    skills: ["MOBILE PROGRAMMING", "FLUTTER", "DART"],
-    link: "#",
-  },
+    {
+      title: "CAPSTONE PUBLIC DEFENSE",
+      issuer: "UNIVERSITY OF MINDANAO",
+      date: "2026",
+      // credential: "CREDENTIAL ID",
+      image: certificate6,
+      skills: ["MOBILE PROGRAMMING", "FLUTTER", "DART"],
+      link: "#",
+    },
 
-   {
-    title: "REACT JS CERTIFICATION",
-    issuer: "UNIVERSITY OF MINDANAO",
-    date: "2026",
-    // credential: "CREDENTIAL ID",
-    image: certificate7,
-    skills: ["REACT", "JAVASCRIPT", "WEB DEVELOPMENT"],
-    link: "#",
-  },
+    {
+      title: "REACT JS CERTIFICATION",
+      issuer: "UNIVERSITY OF MINDANAO",
+      date: "2026",
+      // credential: "CREDENTIAL ID",
+      image: certificate7,
+      skills: ["REACT", "JAVASCRIPT", "WEB DEVELOPMENT"],
+      link: "#",
+    },
+  ];
 
-];
+  // ============================================================
+  // CERTIFICATES TO DISPLAY
+  // ============================================================
 
+  const visibleCertifications = showAll
+    ? certifications
+    : certifications.slice(0, 3);
 
   return (
     <section
@@ -106,9 +124,9 @@ export default function Certifications() {
         overflow-hidden
       "
     >
-      {/* ================================
+      {/* ============================================================
           BACKGROUND ATMOSPHERE
-      ================================= */}
+      ============================================================ */}
 
       <div
         className="
@@ -133,9 +151,9 @@ export default function Certifications() {
         "
       />
 
-      {/* ================================
+      {/* ============================================================
           MAIN CONTENT
-      ================================= */}
+      ============================================================ */}
 
       <div
         className="
@@ -145,9 +163,9 @@ export default function Certifications() {
           w-full
         "
       >
-        {/* ================================
+        {/* ============================================================
             HEADER
-        ================================= */}
+        ============================================================ */}
 
         <div className="mb-12">
           <p
@@ -190,9 +208,9 @@ export default function Certifications() {
           </p>
         </div>
 
-        {/* ================================
+        {/* ============================================================
             CERTIFICATION GRID
-        ================================= */}
+        ============================================================ */}
 
         <div
           className="
@@ -203,9 +221,9 @@ export default function Certifications() {
             gap-6
           "
         >
-          {certifications.map((cert, index) => (
+          {visibleCertifications.map((cert, index) => (
             <div
-              key={index}
+              key={cert.title}
               className="
                 group
                 relative
@@ -222,9 +240,9 @@ export default function Certifications() {
                 hover:shadow-[0_0_30px_rgba(0,255,255,0.08)]
               "
             >
-              {/* ================================
+              {/* =====================================================
                   HUD CORNER - TOP RIGHT
-              ================================= */}
+              ===================================================== */}
 
               <div
                 className="
@@ -242,9 +260,9 @@ export default function Certifications() {
                 "
               />
 
-              {/* ================================
+              {/* =====================================================
                   HUD CORNER - BOTTOM LEFT
-              ================================= */}
+              ===================================================== */}
 
               <div
                 className="
@@ -262,9 +280,9 @@ export default function Certifications() {
                 "
               />
 
-              {/* ================================
+              {/* =====================================================
                   CERTIFICATE IMAGE
-              ================================= */}
+              ===================================================== */}
 
               <div
                 className="
@@ -280,6 +298,8 @@ export default function Certifications() {
                 <img
                   src={cert.image}
                   alt={cert.title}
+                  loading="lazy"
+                  decoding="async"
                   className="
                     w-full
                     h-full
@@ -294,7 +314,7 @@ export default function Certifications() {
                   "
                 />
 
-                {/* Cyan overlay */}
+                {/* CYAN OVERLAY */}
 
                 <div
                   className="
@@ -306,7 +326,7 @@ export default function Certifications() {
                   "
                 />
 
-                {/* Image number */}
+                {/* CERTIFICATE NUMBER */}
 
                 <div
                   className="
@@ -324,18 +344,18 @@ export default function Certifications() {
                     tracking-[0.2em]
                   "
                 >
-                  CERT_00{index + 1}
+                  CERT_{String(index + 1).padStart(3, "0")}
                 </div>
               </div>
 
-              {/* ================================
+              {/* =====================================================
                   CARD CONTENT
-              ================================= */}
+              ===================================================== */}
 
               <div className="p-6">
-                {/* ================================
+                {/* =================================================
                     ICON + VERIFIED
-                ================================= */}
+                ================================================= */}
 
                 <div className="flex items-start justify-between">
                   <div
@@ -374,9 +394,9 @@ export default function Certifications() {
                   </span>
                 </div>
 
-                {/* ================================
+                {/* =================================================
                     CERTIFICATE INFORMATION
-                ================================= */}
+                ================================================= */}
 
                 <div className="mt-6">
                   <p
@@ -386,7 +406,7 @@ export default function Certifications() {
                       tracking-[0.35em]
                     "
                   >
-                    CERTIFICATION // 00{index + 1}
+                    CERTIFICATION // {String(index + 1).padStart(3, "0")}
                   </p>
 
                   <h2
@@ -416,9 +436,9 @@ export default function Certifications() {
                   </p>
                 </div>
 
-                {/* ================================
+                {/* =================================================
                     DATE
-                ================================= */}
+                ================================================= */}
 
                 <div
                   className="
@@ -439,25 +459,27 @@ export default function Certifications() {
                   ISSUED: {cert.date}
                 </div>
 
-                {/* ================================
+                {/* =================================================
                     CREDENTIAL
-                ================================= */}
+                ================================================= */}
 
-                <div
-                  className="
-                    mt-3
-                    text-zinc-600
-                    text-[9px]
-                    tracking-[0.2em]
-                    truncate
-                  "
-                >
-                  {/* ID: {cert.credential} */}
-                </div>
+                {cert.credential && (
+                  <div
+                    className="
+                      mt-3
+                      text-zinc-600
+                      text-[9px]
+                      tracking-[0.2em]
+                      truncate
+                    "
+                  >
+                    ID: {cert.credential}
+                  </div>
+                )}
 
-                {/* ================================
+                {/* =================================================
                     SKILLS
-                ================================= */}
+                ================================================= */}
 
                 <div
                   className="
@@ -487,9 +509,9 @@ export default function Certifications() {
                   ))}
                 </div>
 
-                {/* ================================
-                    FOOTER
-                ================================= */}
+                {/* =================================================
+                    CARD FOOTER
+                ================================================= */}
 
                 <div
                   className="
@@ -547,9 +569,139 @@ export default function Certifications() {
           ))}
         </div>
 
-        {/* ================================
+        {/* ============================================================
+            SEE MORE / SHOW LESS
+        ============================================================ */}
+
+        {certifications.length > 3 && (
+          <div
+            className="
+              mt-10
+              flex
+              flex-col
+              items-center
+              justify-center
+              gap-4
+            "
+          >
+            {/* SMALL STATUS TEXT */}
+
+            <p
+              className="
+                text-zinc-700
+                text-[8px]
+                tracking-[0.3em]
+              "
+            >
+              {showAll
+                ? `DISPLAYING ALL ${String(certifications.length).padStart(
+                    2,
+                    "0"
+                  )} CERTIFICATIONS`
+                : `DISPLAYING 03 OF ${String(
+                    certifications.length
+                  ).padStart(2, "0")} CERTIFICATIONS`}
+            </p>
+
+            {/* BUTTON */}
+
+            <button
+              type="button"
+              onClick={() => setShowAll((prev) => !prev)}
+              aria-expanded={showAll}
+              className="
+                group
+                relative
+
+                min-w-[190px]
+
+                px-7
+                py-3.5
+
+                rounded-full
+
+                border
+                border-cyan-400/30
+
+                bg-cyan-400/[0.02]
+
+                text-cyan-400
+                text-[9px]
+
+                tracking-[0.35em]
+
+                hover:border-cyan-400/70
+                hover:bg-cyan-400/[0.06]
+                hover:shadow-[0_0_25px_rgba(0,255,255,0.10)]
+
+                active:scale-[0.98]
+
+                transition-all
+                duration-300
+              "
+            >
+              {/* LEFT GLOW */}
+
+              <span
+                className="
+                  absolute
+                  left-5
+                  top-1/2
+                  -translate-y-1/2
+
+                  w-1.5
+                  h-1.5
+
+                  rounded-full
+
+                  bg-cyan-400
+
+                  shadow-[0_0_10px_rgba(0,255,255,0.9)]
+
+                  opacity-60
+
+                  group-hover:opacity-100
+
+                  transition
+                "
+              />
+
+              {/* BUTTON CONTENT */}
+
+              <span
+                className="
+                  flex
+                  items-center
+                  justify-center
+                  gap-3
+                "
+              >
+                {showAll ? "SHOW LESS" : "SEE MORE"}
+
+                <span
+                  className={`
+                    text-sm
+
+                    transition-transform
+                    duration-300
+
+                    ${
+                      showAll
+                        ? "rotate-180"
+                        : "group-hover:translate-y-0.5"
+                    }
+                  `}
+                >
+                  ↓
+                </span>
+              </span>
+            </button>
+          </div>
+        )}
+
+        {/* ============================================================
             BOTTOM STATUS
-        ================================= */}
+        ============================================================ */}
 
         <div
           className="
@@ -557,13 +709,18 @@ export default function Certifications() {
             border-t
             border-white/10
             pt-5
+
             flex
             flex-col
             sm:flex-row
+
             gap-3
+
             items-start
             sm:items-center
+
             justify-between
+
             text-[9px]
             tracking-[0.3em]
             text-zinc-600

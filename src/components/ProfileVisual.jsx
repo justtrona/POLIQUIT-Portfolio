@@ -174,9 +174,7 @@ export default function ProfileVisual() {
       </div>
 
 
-      {/* =========================================
-          CORNER HUD DETAILS
-          ========================================= */}
+      {/* */}
 
       <div
         className="
@@ -189,7 +187,6 @@ export default function ProfileVisual() {
           z-10
         "
       >
-        PROFILE // 001
       </div>
 
     </motion.div>
